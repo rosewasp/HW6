@@ -43,7 +43,22 @@ document.getElementById("submit").addEventListener("click", function(event) {
   req.addEventListener("load", function() {
     if (req.status >= 200 && req.status < 400) {
       var response = JSON.parse(req.responseText);
-      document.getElementById("results").textContent = response;
+
+      var req = new XMLHttpRequest();
+      req.open("GET", "/database", true);
+
+      req.addEventListener("load", function(){
+        if (req.status >= 200 && req.status < 400){
+          var response = JSON.parse(req.responseText);
+          var response = JSON.parse(response.results);
+          document.getElementById("results").textContent = response;
+        } else {
+          console.log("Error in network request: " + req.statusText);
+        }
+    });
+    req.send(null);
+    event.preventDefault();
+
     } else {
       console.log("Error in network request: " + req.statusText);
     }
