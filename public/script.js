@@ -43,7 +43,7 @@ document.getElementById("submit").addEventListener("click", function(event) {
   req.addEventListener("load", function() {
     if (req.status >= 200 && req.status < 400) {
       var response = JSON.parse(req.responseText);
-      var response = JSON.parse(response.results)
+      console.log(response)
       document.getElementById("results").textContent = response;
     } else {
       console.log("Error in network request: " + req.statusText);
