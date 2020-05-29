@@ -19,7 +19,6 @@ app.set("port", 14989);
 // sets the folder from which static files such as images and css code are used
 app.use(express.static('public'));
 
-
 // renders the home.handlebars file at the homepage
 app.get("/",function(req,res){
     res.render("home");
@@ -55,6 +54,8 @@ app.get("/insert", function(req,res,next){
         res.send(context);
     });
 });
+
+
 // displays error when desired page is not in server
 app.use(function(req,res){
     res.status(404);

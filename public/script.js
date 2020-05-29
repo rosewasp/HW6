@@ -1,3 +1,13 @@
+// most of the code from DOM and Events Assignment...
+// and from XML request lecture
+
+
+// connect "Update Workout Log" button to...
+// "/insert" to database
+
+
+
+
 // Create table node
 var fourByFour = document.createElement("table");
 fourByFour.style.borderStyle = "solid";
