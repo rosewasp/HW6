@@ -22,8 +22,6 @@ document.getElementById("submit").addEventListener("click", function(event) {
   } else {
     var lbs = 0
   }
-
-  console.log(lbs)
   
   // workouts cannot be logged without a name
   if (name == "") {
@@ -39,13 +37,12 @@ document.getElementById("submit").addEventListener("click", function(event) {
   var lbsUrl = "lbs"+"="+lbs
   var insertUrl = route + nameUrl + repsUrl + weightUrl + dateUrl + lbsUrl
 
-  console.log(lbsUrl)
-
+  // add to database
   req.open("GET", insertUrl, true);
 
   req.addEventListener("load", function() {
     if (req.status >= 200 && req.status < 400) {
-      var response = JSON.parse(req.responseText);
+      var response = JSON.parse((JSON.parse(req.responseText)).results);
       document.getElementById("results").textContent = response;
     } else {
       console.log("Error in network request: " + req.statusText);
