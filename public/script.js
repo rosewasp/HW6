@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function(){
 // each table row will have edit and delete button
 
 
-/*
 
 // Create table node
 var fourByFour = document.createElement("table");
@@ -233,5 +232,3 @@ function markYellow() {
 }
 
 document.getElementById("mark").addEventListener("click", markYellow);
-
-*/
