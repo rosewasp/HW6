@@ -13,8 +13,16 @@ document.getElementById("submit").addEventListener("click", function(event) {
   var reps = document.getElementById("reps").value
   var weight = document.getElementById("weight").value
   var date = document.getElementById("date").value
-  var lbs = document.getElementById("lbs").checked // returns 0 for false and 1 for true
   
+  // Boolean has to be processed differently
+  // for it to take effect in database
+  var trueFalse = document.getElementById("lbs").checked
+  if (trueFalse){
+    var lbs = 1
+  } else {
+    var lbs = 0
+  }
+
   console.log(lbs)
   
   // workouts cannot be logged without a name
@@ -32,7 +40,7 @@ document.getElementById("submit").addEventListener("click", function(event) {
   var insertUrl = route + nameUrl + repsUrl + weightUrl + dateUrl + lbsUrl
 
   console.log(lbsUrl)
-  
+
   req.open("GET", insertUrl, true);
 
   req.addEventListener("load", function() {
