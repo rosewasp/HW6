@@ -1,3 +1,5 @@
+// most of the code framework from helloMysql.js file from lecture
+
 // using express module to create express application
 var express = require("express");
 
