@@ -41,30 +41,21 @@ document.getElementById("submit").addEventListener("click", function(event) {
   req.open("GET", insertUrl, true);
 
   req.addEventListener("load", function() {
-    if (req.status >= 200 && req.status < 400) {
-      var response = JSON.parse(req.responseText); // displays the number of rows inserted, not the response fron database
+    var response = JSON.parse(req.responseText); // displays the number of rows inserted, not the response fron database
 
-      // need response that is database as JSON
-      var req = new XMLHttpRequest(); // make new AJAX request
-      // get everything from database
-      req.open("GET", '/database', true);
+    // need response that is database as JSON
+    var req = new XMLHttpRequest(); // make new AJAX request
+    // get everything from database
+    req.open("GET", '/database', true);
 
-      // process '/database' response into a table
-      req.addEventListener("load", function(){
-        if (req.status >= 200 && req.status < 400) {
-          var response = JSON.parse(req.responseText);
-          document.getElementById("results").textContent = response;
-        } else {
-          console.log("Error in network request: " + req.statusText);
-        }
-      });
-      req.send(null);
+    // process '/database' response into a table
+    req.addEventListener("load", function(){
+      var response = JSON.parse(req.responseText);
+      document.getElementById("results").textContent = response;
+    });
+    req.send(null);
 
-      event.preventDefault();
-
-    } else {
-      console.log("Error in network request: " + req.statusText);
-    }
+    event.preventDefault();
   });
 
   req.send(null);
