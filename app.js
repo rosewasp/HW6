@@ -39,6 +39,19 @@ app.get('/database',function(req,res,next){
     });
   });
 
+// inserts into the database table
+app.get("/insert", function(req,res,next){
+    var context = {};
+    mysql.pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?,?,?,?,?)",[req.query.name,req.query.reps,req.query.weight,req.query.date,req.query.lbs],function(err,results){
+        if (err){
+            next(err);
+            return;
+        }
+        context.results = "Inserted id " + results.insertId;
+        res.send(context);
+    });
+});
+
 // reset database table
 app.get("/reset-table",function(req,res,next){
     var context = {};
@@ -56,20 +69,6 @@ app.get("/reset-table",function(req,res,next){
         })
     });
 });
-
-// inserts into the database table
-app.get("/insert", function(req,res,next){
-    var context = {};
-    mysql.pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?,?,?,?,?)",[req.query.name,req.query.reps,req.query.weight,req.query.date,req.query.lbs],function(err,results){
-        if (err){
-            next(err);
-            return;
-        }
-        context.results = "Inserted id " + results.insertId;
-        res.send(context);
-    });
-});
-
 
 // displays error when desired page is not in server
 app.use(function(req,res){

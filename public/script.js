@@ -40,6 +40,8 @@ document.addEventListener("DOMContentLoaded", function(){
   
     // add to database
     req.open("GET", insertUrl, true);
+
+    console.log(req.status)
   
     req.addEventListener("load", function() {
       if (req.status >= 200 && req.status < 400) {
