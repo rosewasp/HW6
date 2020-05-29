@@ -42,9 +42,26 @@ document.getElementById("submit").addEventListener("click", function(event) {
 
   req.addEventListener("load", function() {
     if (req.status >= 200 && req.status < 400) {
-      var response = JSON.parse(req.responseText);
-      console.log(response)
-      document.getElementById("results").textContent = response;
+      var response = JSON.parse(req.responseText); // displays the number of rows inserted, not the response fron database
+
+      // need response that is database as JSON
+      var req = new XMLHttpRequest(); // make new AJAX request
+      // get everything from database
+      req.open("GET", '/database', true);
+
+      // process '/database' response into a table
+      req.addEventListener("load", function(){
+        if (req.status >= 200 && req.status < 400) {
+          var response = JSON.parse(req.responseText);
+          document.getElementById("results").textContent = response;
+        } else {
+          console.log("Error in network request: " + req.statusText);
+        }
+      });
+      req.send(null);
+
+      event.preventDefault();
+
     } else {
       console.log("Error in network request: " + req.statusText);
     }

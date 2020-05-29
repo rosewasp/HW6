@@ -26,6 +26,19 @@ app.get("/",function(req,res){
     res.render("home");
 });
 
+// renders a page will all the rows from the database table
+app.get('/database',function(req,res,next){
+    var context = {};
+    mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+      if(err){
+        next(err);
+        return;
+      }
+      context.results = JSON.stringify(rows);
+      res.send(context); // sends the database as a JSON file
+    });
+  });
+
 // reset database table
 app.get("/reset-table",function(req,res,next){
     var context = {};
