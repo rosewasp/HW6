@@ -19,8 +19,14 @@ app.set("port", 14989);
 // sets the folder from which static files such as images and css code are used
 app.use(express.static('public'));
 
+
+// renders the home.handlebars file at the homepage
+app.get("/",function(req,res){
+    res.render("home");
+});
+
 // reset database table
-app.get('/reset-table',function(req,res,next){
+app.get("/reset-table",function(req,res,next){
     var context = {};
     mysql.pool.query("DROP TABLE IF EXISTS workouts", function(err){ //replace your connection pool with the your variable containing the connection pool
         var createString = "CREATE TABLE workouts("+
@@ -32,13 +38,13 @@ app.get('/reset-table',function(req,res,next){
         "lbs BOOLEAN)";
         mysql.pool.query(createString, function(err){
             context.results = "Table reset";
-            res.render('home',context);
+            res.render("home",context);
         })
     });
 });
 
 // inserts into the database table
-app.get('/insert', function(req,res,next){
+app.get("/insert", function(req,res,next){
     var context = {};
     mysql.pool.query("INSERT INTO workouts (`name`,`reps`,`weight`,`date`,`lbs`) VALUES (?,?,?,?,?)",[req.query.name,req.query.reps,req.query.weight,req.query.date,req.query.lbs],function(err,results){
         if (err){
