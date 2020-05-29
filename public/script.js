@@ -5,7 +5,8 @@
 // connect "Update Workout Log" button to...
 // "/insert" to database
 
-
+// form a table from each row in database
+// each table row will have edit and delete button
 
 
 // Create table node
