@@ -14,7 +14,9 @@ document.getElementById("submit").addEventListener("click", function(event) {
   var weight = document.getElementById("weight").value
   var date = document.getElementById("date").value
   var lbs = document.getElementById("lbs").checked // returns 0 for false and 1 for true
-
+  
+  console.log(lbs)
+  
   // workouts cannot be logged without a name
   if (name == "") {
     return;
@@ -29,6 +31,8 @@ document.getElementById("submit").addEventListener("click", function(event) {
   var lbsUrl = "lbs"+"="+lbs
   var insertUrl = route + nameUrl + repsUrl + weightUrl + dateUrl + lbsUrl
 
+  console.log(lbsUrl)
+  
   req.open("GET", insertUrl, true);
 
   req.addEventListener("load", function() {
