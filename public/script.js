@@ -1,33 +1,33 @@
 // most of the code from DOM and Events Assignment...
 // and from XML request lecture and Activity.
 
-// create a table with column headers
-var workoutLog = htmlTable(null);
+// Create table node
+var workoutLog = document.createElement("table");
+workoutLog.id = "workoutLog";
 document.body.appendChild(workoutLog);
+// Create table head and add it to table
+var tableHead = document.createElement("thead");
+var rowOne = document.createElement("tr");
 
-// a function to turn database table into HTML table
+// add first row with appropriate headings
+workoutLog.appendChild(tableHead);
+tableHead.appendChild(rowOne);
+var headers = ["Exercise Name", "Repitions Performed", "Weight Used", "Unit of Weight", "Date Performed"]
+headers.forEach(function(i){
+	var newHead = document.createElement("th");
+  newHead.textContent = i;
+  newHead.id = "id" + i;
+  rowOne.appendChild(newHead);
+  });
+
+// add body to table
+var tableBody = document.createElement("tbody");
+workoutLog.appendChild(tableBody);
+
+
+
+// a function to turn database data into HTML table
 function htmlTable(data){
-  // Create table node
-  var fiveAcross = document.createElement("table");
-  fiveAcross.id = "workoutLog";
-
-  // Create table head and add it to table
-  var tableHead = document.createElement("thead");
-  var rowOne = document.createElement("tr");
-
-  // add first row with appropriate headings
-  fiveAcross.appendChild(tableHead);
-  tableHead.appendChild(rowOne);
-  var headers = ["Exercise Name", "Repitions Performed", "Weight Used", "Unit of Weight", "Date Performed"]
-  headers.forEach (function(i){
-    var newHead = document.createElement("th");
-    newHead.textContent = i;
-    newHead.id = "id" + i;
-    rowOne.appendChild(newHead);
-});
-  // add body to table
-  var tableBody = document.createElement("tbody");
-  fiveAcross.appendChild(tableBody);
 
   // when JSON data is passed
   if (data != null){
@@ -41,7 +41,7 @@ function htmlTable(data){
         newRow.appendChild(newCell);
       });
       // add update and delete buttons to each newRow
-      
+
     });
   };
 };
