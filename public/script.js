@@ -3,7 +3,13 @@
 
 // create a table 
 
+// Create table node
+var fourByFour = document.createElement("table");
+fourByFour.style.borderStyle = "solid";
+fourByFour.style.borderColor = "black";
 
+// add table to body of html
+document.body.appendChild(fourByFour);
 
 
 
