@@ -1,7 +1,11 @@
 // most of the code from DOM and Events Assignment...
 // and from XML request lecture and Activity.
 
+// create a table 
 
+
+
+/*
 // connect "Update Workout Log" button to...
 // "/insert" to database
 document.addEventListener("DOMContentLoaded", function(){
@@ -41,8 +45,6 @@ document.addEventListener("DOMContentLoaded", function(){
     // add to database
     req.open("GET", insertUrl, true);
 
-    console.log(req.status)
-  
     req.addEventListener("load", function() {
       if (req.status >= 200 && req.status < 400) {
         var response = JSON.parse(req.responseText);
@@ -75,8 +77,6 @@ document.addEventListener("DOMContentLoaded", function(){
 // form a table from each row in database
 // each table row will have edit and delete button
 
-
-/*
 
 // Create table node
 var fourByFour = document.createElement("table");
