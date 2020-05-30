@@ -2,13 +2,14 @@
 // and from XML request lecture and Activity.
 
 // create a table with column headers
-workoutLog = htmlTable();
+var workoutLog = htmlTable();
 document.body.appendChild(workoutLog);
 
 // a function to turn database table into HTML table
-function htmlTable(data){
+function htmlTable(){
   // Create table node
   var fiveAcross = document.createElement("table");
+  fiveAcross.id = "workoutLog";
 
   // Create table head and add it to table
   var tableHead = document.createElement("thead");
