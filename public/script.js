@@ -1,30 +1,6 @@
 // most of the code from DOM and Events Assignment...
 // and from XML request lecture and Activity.
 
-// Create table node
-var workoutLog = document.createElement("table");
-workoutLog.id = "workoutLog";
-document.body.appendChild(workoutLog);
-// Create table head and add it to table
-var tableHead = document.createElement("thead");
-var rowOne = document.createElement("tr");
-
-// add first row with appropriate headings
-workoutLog.appendChild(tableHead);
-tableHead.appendChild(rowOne);
-var headers = ["Exercise", "Repitions", "Weight", "Unit", "Date"]
-headers.forEach(function(i){
-	var newHead = document.createElement("th");
-  newHead.textContent = i;
-  newHead.id = "id" + i;
-  rowOne.appendChild(newHead);
-  });
-
-// add body to table
-var tableBody = document.createElement("tbody");
-tableBody.id = "tableBody"
-workoutLog.appendChild(tableBody);
-
 document.addEventListener("DOMContentLoaded", function(){
   var req = new XMLHttpRequest();
   req.open("GET", "/database", true);
@@ -100,9 +76,34 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 
+
 // a function to turn database data into HTML table
 function htmlTable(data){
 
+  // Create table node
+  var workoutLog = document.createElement("table");
+  workoutLog.id = "workoutLog";
+  document.body.appendChild(workoutLog);
+  // Create table head and add it to table
+  var tableHead = document.createElement("thead");
+  var rowOne = document.createElement("tr");
+  
+  // add first row with appropriate headings
+  workoutLog.appendChild(tableHead);
+  tableHead.appendChild(rowOne);
+  var headers = ["Exercise", "Repitions", "Weight", "Unit", "Date"]
+  headers.forEach(function(i){
+    var newHead = document.createElement("th");
+    newHead.textContent = i;
+    newHead.id = "id" + i;
+    rowOne.appendChild(newHead);
+  });
+  
+  // add body to table
+  var tableBody = document.createElement("tbody");
+  tableBody.id = "tableBody"
+  workoutLog.appendChild(tableBody);
+  
   // when JSON data is passed
   if (data != null){
     var databaseColumns = ["name", "reps", "weight","lbs", "date"]
@@ -214,4 +215,5 @@ function htmlTable(data){
       tableBody.appendChild(newRow);
     });
   };
+  return workoutLog;
 };
