@@ -2,7 +2,6 @@
 // and from XML request lecture and Activity.
 
 // create initial table with headers only
-
 // Create table node
 var fourByFour = document.createElement("table");
 fourByFour.style.borderStyle = "solid";
