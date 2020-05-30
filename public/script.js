@@ -11,7 +11,22 @@ fourByFour.style.borderColor = "black";
 // add table to body of html
 document.body.appendChild(fourByFour);
 
+// Create table head and add it to table
+var tableHead = document.createElement("thead");
+var rowOne = document.createElement("tr");
 
+// add first row
+fourByFour.appendChild(tableHead);
+tableHead.appendChild(rowOne);
+
+// add cells in first row (header cells)
+for(var i = 1; i < 5; i++){
+	var newHead = document.createElement("th");
+  newHead.textContent = "Header "+ i;
+  newHead.style.borderStyle = "solid";
+  newHead.style.borderColor = "black";
+  rowOne.appendChild(newHead);
+}
 
 /*
 // connect "Update Workout Log" button to...
