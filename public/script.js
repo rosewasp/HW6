@@ -2,7 +2,7 @@
 // and from XML request lecture and Activity.
 
 // create a table with column headers
-var workoutLog = htmlTable();
+var workoutLog = htmlTable(null);
 document.body.appendChild(workoutLog);
 
 // a function to turn database table into HTML table
@@ -15,17 +15,36 @@ function htmlTable(data){
   var tableHead = document.createElement("thead");
   var rowOne = document.createElement("tr");
 
-  // add first row
+  // add first row with appropriate headings
   fiveAcross.appendChild(tableHead);
   tableHead.appendChild(rowOne);
-  var headers = ["Name", "Reps", "Weight", "Unit", "Date"]
+  var headers = ["Exercise Name", "Repitions Performed", "Weight Used", "Unit of Weight", "Date Performed"]
   headers.forEach (function(i){
     var newHead = document.createElement("th");
     newHead.textContent = i;
     newHead.id = "id" + i;
     rowOne.appendChild(newHead);
 });
-}
+  // add body to table
+  var tableBody = document.createElement("tbody");
+  fiveAcross.appendChild(tableBody);
+
+  // when JSON data is passed
+  if (data != null){
+    var databaseColumns = ["name", "reps", "weight","lbs", "date"]
+    //iterate through each element in JSON data
+    data.forEach(function(j){
+      var newRow = document.createElement("tr");
+      databaseColumns.forEach(function(k){
+        var newCell = document.createElement("td");
+        newCell.textContent = j[k];
+        newRow.appendChild(newCell);
+      });
+      // add update and delete buttons to each newRow
+      
+    });
+  };
+};
 
 /*
 // connect "Update Workout Log" button to...
