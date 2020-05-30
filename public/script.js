@@ -1,7 +1,7 @@
 // most of the code from DOM and Events Assignment...
 // and from XML request lecture and Activity.
 
-// create a table 
+// create initial table with headers only
 
 // Create table node
 var fourByFour = document.createElement("table");
@@ -20,13 +20,14 @@ fourByFour.appendChild(tableHead);
 tableHead.appendChild(rowOne);
 
 // add cells in first row (header cells)
-for(var i = 1; i < 5; i++){
+var headers = ["name", "reps", "weight", "date", "lbs"]
+headers.forEach (function(i){
 	var newHead = document.createElement("th");
-  newHead.textContent = "Header "+ i;
+  newHead.textContent = i;
   newHead.style.borderStyle = "solid";
   newHead.style.borderColor = "black";
   rowOne.appendChild(newHead);
-}
+})
 
 /*
 // connect "Update Workout Log" button to...
