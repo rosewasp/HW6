@@ -12,7 +12,7 @@ var rowOne = document.createElement("tr");
 // add first row with appropriate headings
 workoutLog.appendChild(tableHead);
 tableHead.appendChild(rowOne);
-var headers = ["Exercise Name", "Repitions Performed", "Weight Used", "Unit of Weight", "Date Performed"]
+var headers = ["Exercise", "Repitions", "Weight", "Unit", "Date"]
 headers.forEach(function(i){
 	var newHead = document.createElement("th");
   newHead.textContent = i;
