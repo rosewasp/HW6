@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function(){
   req.addEventListener("load", function(){
     var response = JSON.parse(req.responseText);
     var usableData = JSON.parse(response.results);
+    console.log(usableData);
     var newBody = htmlTable(usableData);
     var oldBody = document.getElementById("tableBody");
     var workoutLog = document.getElementById("workoutLog");
