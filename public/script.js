@@ -6,7 +6,7 @@ var workoutLog = htmlTable();
 document.body.appendChild(workoutLog);
 
 // a function to turn database table into HTML table
-function htmlTable(){
+function htmlTable(data){
   // Create table node
   var fiveAcross = document.createElement("table");
   fiveAcross.id = "workoutLog";
@@ -22,6 +22,7 @@ function htmlTable(){
   headers.forEach (function(i){
     var newHead = document.createElement("th");
     newHead.textContent = i;
+    newHead.id = "id" + i;
     rowOne.appendChild(newHead);
 });
 }
