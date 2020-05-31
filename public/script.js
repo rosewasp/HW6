@@ -185,7 +185,7 @@ function htmlTable(data){
       newRow.appendChild(newDiv);
       deleteInput = document.createElement("input");
       newDiv.appendChild(deleteInput);
-      deleteInput.id = "deleteButton";
+      deleteInput.id = "deletebutton";
       deleteInput.type = "button";
       deleteInput.value = "Delete Entry";
 
@@ -221,7 +221,7 @@ function htmlTable(data){
       // add an edit button to each newRow
       editInput = document.createElement("input");
       newDiv.appendChild(editInput);
-      editInput.id = "editButton";
+      editInput.id = "editbutton";
       editInput.type = "button";
       editInput.value = "Edit Entry";
 
