@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function(){
     var usableData = JSON.parse(response.results);
     var newBody = htmlTable(usableData);
     var oldBody = document.getElementById("tableBody");
-    var workoutLog = document.getElementById("workoutLog");
     workoutLog.removeChild(oldBody);
     newBody.id = "tableBody";
     workoutLog.appendChild(newBody);
@@ -85,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function(){
         var usableData = JSON.parse(response.results);
         var newBody = htmlTable(usableData);
         var oldBody = document.getElementById("tableBody");
-        var workoutLog = document.getElementById("workoutLog");
         workoutLog.removeChild(oldBody);
         newBody.id = "tableBody";
         workoutLog.appendChild(newBody);
@@ -145,7 +143,6 @@ function htmlTable(data){
             var usableData = JSON.parse(response.results);
             var newBody = htmlTable(usableData);
             var oldBody = document.getElementById("tableBody");
-            var workoutLog = document.getElementById("workoutLog");
             workoutLog.removeChild(oldBody);
             newBody.id = "tableBody";
             workoutLog.appendChild(newBody);
@@ -199,7 +196,6 @@ function htmlTable(data){
             var usableData = JSON.parse(response.results);
             var newBody = htmlTable(usableData);
             var oldBody = document.getElementById("tableBody");
-            var workoutLog = document.getElementById("workoutLog");
             workoutLog.removeChild(oldBody);
             newBody.id = "tableBody";
             workoutLog.appendChild(newBody);
