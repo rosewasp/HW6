@@ -16,7 +16,7 @@ var rowOne = document.createElement("tr");
 // add first row with appropriate headings
 workoutLog.appendChild(tableHead);
 tableHead.appendChild(rowOne);
-var headers = ["Exercise", "Repitions", "Weight", "Unit", "Date"]
+var headers = ["Exercise", "Repetitions", "Weight", "Unit", "Date"]
 headers.forEach(function(i){
 	var newHead = document.createElement("th");
   newHead.textContent = i;
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(){
     
     // workouts cannot be logged without a name
     if (name == "") {
-      return;
+      event.preventDefault();
     }
   
     // transform form elements into /insert url
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function(){
     
     // workouts cannot be updated without a name
     if (name == "") {
-      return;
+      revent.preventDefault();
     }
   
     // transform form elements into /update url
