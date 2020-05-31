@@ -1,6 +1,6 @@
 // most of the code from DOM and Events Assignment...
 // and from XML request lecture and Activity.
-
+var form = document.getElementById("secret");
 // Create table node
 var workoutLog = document.createElement("table");
 workoutLog.id = "workoutLog";
@@ -70,6 +70,61 @@ document.addEventListener("DOMContentLoaded", function(){
   
     // add to database
     req.open("GET", insertUrl, true);
+
+    req.addEventListener("load", function(){
+      var req = new XMLHttpRequest();
+      req.open("GET", "/database", true);
+      req.addEventListener("load", function(){
+        var response = JSON.parse(req.responseText);
+        var usableData = JSON.parse(response.results);
+        var newBody = htmlTable(usableData);
+        var oldBody = document.getElementById("tableBody");
+        workoutLog.removeChild(oldBody);
+        newBody.id = "tableBody";
+        workoutLog.appendChild(newBody);
+      });
+      req.send(null);
+      event.preventDefault();
+    });
+    req.send(null);
+    event.preventDefault();
+  });
+
+  document.getElementById("submit2").addEventListener("click", function(event){
+    var editId = form.id;
+    var req = new XMLHttpRequest(); // variable needed to make an Ajax request
+  
+    // get all the values from the workout log form
+    var name = document.getElementById("name").value
+    var reps = document.getElementById("reps").value
+    var weight = document.getElementById("weight").value
+    var date = document.getElementById("date").value
+    
+    // Boolean has to be processed differently
+    // for it to take effect in database
+    var trueFalse = document.getElementById("lbs").checked
+    if (trueFalse){
+      var lbs = 1
+    } else {
+      var lbs = 0
+    }
+    
+    // workouts cannot be updated without a name
+    if (name == "") {
+      return;
+    }
+  
+    // transform form elements into /update url
+    var route = "/update?";
+    var nameUrl = "name"+"="+name+"&";
+    var repsUrl = "reps"+"="+reps+"&";
+    var weightUrl = "weight"+"="+weight+"&";
+    var dateUrl = "date"+"="+date+"&";
+    var lbsUrl = "lbs"+"="+lbs+"&";
+    var updateUrl = route + nameUrl + repsUrl + weightUrl + dateUrl + lbsUrl + "id=" + editId;
+  
+    // add to database
+    req.open("GET", updateUrl, true);
 
     req.addEventListener("load", function(){
       var req = new XMLHttpRequest();
@@ -161,6 +216,7 @@ function htmlTable(data){
         var editId = this.id;
         var req = new XMLHttpRequest();
         var editUrl = "/edit?id=" + editId;
+        form.id = editId;
 
         req.open("GET", editUrl, true);
         
