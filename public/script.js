@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function(){
     
     // workouts cannot be logged without a name
     if (name == "") {
-      req.send(null);
       event.preventDefault();
       return;
     }
@@ -117,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function(){
     
     // workouts cannot be updated without a name
     if (name == "") {
-      req.send(null);
       event.preventDefault();
       return;
     }
