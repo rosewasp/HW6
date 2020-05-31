@@ -171,6 +171,7 @@ function htmlTable(data){
 
             // instead of making table load data to form
             var formIds = ["name", "reps", "weight", "lbs", "date"];
+            console.log(usableData);
             usableData.forEach(function(element){
               formIds.forEach(function(key){
                 if (key == "lbs"){
