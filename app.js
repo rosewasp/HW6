@@ -53,7 +53,7 @@ app.get("/insert", function(req,res,next){
 });
 
 // from  helloMysql.js file from lecture, with added keys to queries
-app.get('/edit',function(req,res,next){
+app.get("/edit",function(req,res,next){
     var context = {};
     mysql.pool.query("SELECT * FROM workouts WHERE id=?", [req.query.id], function(err, result){
       if(err){
@@ -77,7 +77,7 @@ app.get('/edit',function(req,res,next){
   });
 
   // deletes data from database (from helloMysql.js)
-  app.get('/delete',function(req,res,next){
+  app.get("/delete",function(req,res,next){
     var context = {};
     mysql.pool.query("DELETE FROM workouts WHERE id=?", [req.query.id], function(err, result){
       if(err){

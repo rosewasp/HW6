@@ -124,11 +124,12 @@ function htmlTable(data){
       deleteInput.addEventListener("click", function(){
         var deleteId = this.id;
         var req = new XMLHttpRequest();
-        req.open("GET", "/delete?id=" + deleteId, true);
+        var deleteUrl = "/delete?id=" + deleteId;
+        console.log(deleteUrl)
+        req.open("GET", deleteUrl, true);
+
         deleteRow = this.parentElement.parentElement;
-        console.log("row" + deleteRow);
         rowParent = deleteRow.parentElement;
-        console.log("rowParent" + rowParent);
         req.addEventListener("load", function(){
           rowParent.removeChild(deleteRow);
           var req = new XMLHttpRequest();
