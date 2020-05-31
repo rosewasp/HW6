@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function(){
     if (name == "") {
       req.send(null);
       event.preventDefault();
+      return;
     }
   
     // transform form elements into /insert url
@@ -118,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function(){
     if (name == "") {
       req.send(null);
       event.preventDefault();
+      return;
     }
   
     // transform form elements into /update url
