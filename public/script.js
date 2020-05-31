@@ -185,7 +185,6 @@ function htmlTable(data){
       newRow.appendChild(newDiv);
       deleteInput = document.createElement("input");
       newDiv.appendChild(deleteInput);
-      deleteInput.id = "deletebutton";
       deleteInput.type = "button";
       deleteInput.value = "Delete Entry";
 
@@ -221,7 +220,6 @@ function htmlTable(data){
       // add an edit button to each newRow
       editInput = document.createElement("input");
       newDiv.appendChild(editInput);
-      editInput.id = "editbutton";
       editInput.type = "button";
       editInput.value = "Edit Entry";
 
@@ -230,7 +228,7 @@ function htmlTable(data){
         var editId = this.id;
         var req = new XMLHttpRequest();
         var editUrl = "/edit?id=" + editId;
-        form.id = editId;
+        form.id = editId; // secert id is updated to current edit row
 
         req.open("GET", editUrl, true);
         
