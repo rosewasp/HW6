@@ -120,13 +120,6 @@ function htmlTable(data){
       deleteInput.type = "button";
       deleteInput.value = "Delete Entry";
 
-      // add an edit button to each newRow
-      editInput = document.createElement("input");
-      newDiv.appendChild(editInput);
-      editInput.id = j.id;
-      editInput.type = "button";
-      editInput.value = "Edit Entry";
-
       // add functionality to delete button
       deleteInput.addEventListener("click", function(){
         var deleteId = this.id;
@@ -151,6 +144,13 @@ function htmlTable(data){
           event.preventDefault();
         });
       });
+
+      // add an edit button to each newRow
+      editInput = document.createElement("input");
+      newDiv.appendChild(editInput);
+      editInput.id = j.id;
+      editInput.type = "button";
+      editInput.value = "Edit Entry";
 
       // add functionality to edit button
       editInput.addEventListener("click", function(){
