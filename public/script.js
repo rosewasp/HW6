@@ -8,6 +8,7 @@ var form = document.getElementById("secret");
 var workoutLog = document.createElement("table");
 workoutLog.id = "workoutLog";
 document.body.appendChild(workoutLog);
+
 // Create table head and add it to table
 var tableHead = document.createElement("thead");
 var rowOne = document.createElement("tr");
