@@ -125,7 +125,6 @@ function htmlTable(data){
         var deleteId = this.id;
         var req = new XMLHttpRequest();
         var deleteUrl = "/delete?id=" + deleteId;
-        console.log(deleteUrl)
         req.open("GET", deleteUrl, true);
 
         deleteRow = this.parentElement.parentElement;
@@ -146,6 +145,8 @@ function htmlTable(data){
           req.send(null);
           event.preventDefault();
         });
+        req.send(null);
+        event.preventDefault();
       });
 
       // add an edit button to each newRow
