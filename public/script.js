@@ -173,11 +173,7 @@ function htmlTable(data){
             var usableData = JSON.parse(response.results);
 
             // instead of making table load data to form
-            var newBody = htmlTable(usableData);
-            var oldBody = document.getElementById("tableBody");
-            workoutLog.removeChild(oldBody);
-            newBody.id = "tableBody";
-            workoutLog.appendChild(newBody);
+            console.log(usableData);
           });
           req.send(null);
           event.preventDefault();
