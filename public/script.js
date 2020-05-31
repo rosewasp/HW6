@@ -125,7 +125,7 @@ function htmlTable(data){
         var deleteId = this.id;
         var req = new XMLHttpRequest();
         req.open("GET", "/delete?id=" + deleteId, true);
-        deleteRow = this.parentElement;
+        deleteRow = this.parentElement.parentElement;
         console.log("row" + deleteRow);
         rowParent = deleteRow.parentElement;
         console.log("rowParent" + rowParent);
