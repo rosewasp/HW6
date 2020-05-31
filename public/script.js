@@ -25,20 +25,22 @@ headers.forEach(function(i){
   });
 
 document.addEventListener("DOMContentLoaded", function(){
+  // database is parsed and table body is updated
   var req = new XMLHttpRequest();
   req.open("GET", "/database", true);
   req.addEventListener("load", function(){
     var response = JSON.parse(req.responseText);
     var usableData = JSON.parse(response.results);
-    var newBody = htmlTable(usableData);
+    var newBody = htmlTable(usableData); // new table body is formed
     var oldBody = document.getElementById("tableBody");
-    workoutLog.removeChild(oldBody);
+    workoutLog.removeChild(oldBody); // old table body is removed
     newBody.id = "tableBody";
-    workoutLog.appendChild(newBody);
+    workoutLog.appendChild(newBody); // new body is added to workout log
   });
   req.send(null);
   event.preventDefault();
 
+  // add insert functionality
   document.getElementById("submit").addEventListener("click", function(event){
 
     var req = new XMLHttpRequest(); // variable needed to make an Ajax request
@@ -75,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function(){
     // add to database
     req.open("GET", insertUrl, true);
 
+    // update page to reflect addition to database
     req.addEventListener("load", function(){
       var req = new XMLHttpRequest();
       req.open("GET", "/database", true);
@@ -94,8 +97,9 @@ document.addEventListener("DOMContentLoaded", function(){
     event.preventDefault();
   });
 
+  // add update functionality to "Update Existing Log Entry" button
   document.getElementById("submit2").addEventListener("click", function(event){
-    var editId = form.id;
+    var editId = form.id; // the exact database row to be updated
     var req = new XMLHttpRequest(); // variable needed to make an Ajax request
   
     // get all the values from the workout log form
@@ -130,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function(){
     // add to database
     req.open("GET", updateUrl, true);
 
+    // reform the table body to reflect the most recent update
     req.addEventListener("load", function(){
       var req = new XMLHttpRequest();
       req.open("GET", "/database", true);
@@ -167,6 +172,7 @@ function htmlTable(data){
       var newRow = document.createElement("tr");
       databaseColumns.forEach(function(k){
         var newCell = document.createElement("td");
+        // again lbs data is processed differently (check = true = 1 = lb)
         if (k == "lbs"){
           if (j[k] == 1){
             newCell.textContent = "lb";
@@ -189,11 +195,15 @@ function htmlTable(data){
 
       // add functionality to delete button
       deleteInput.addEventListener("click", function(){
+        // row to be deleted
         var deleteId = this.id;
         var req = new XMLHttpRequest();
         var deleteUrl = "/delete?id=" + deleteId;
+
+        // deleted row from database
         req.open("GET", deleteUrl, true);
 
+        // refresh table to reflect most recent ommision from database
         deleteRow = this.parentElement.parentElement;
         rowParent = deleteRow.parentElement;
         req.addEventListener("load", function(){
@@ -225,10 +235,11 @@ function htmlTable(data){
 
       // add functionality to edit button
       editInput.addEventListener("click", function(){
+        // database row that is to be edited
         var editId = this.id;
         var req = new XMLHttpRequest();
         var editUrl = "/edit?id=" + editId;
-        form.id = editId;
+        form.id = editId; // updating secret id to facilitate in updating a specific row
 
         req.open("GET", editUrl, true);
         
@@ -241,6 +252,8 @@ function htmlTable(data){
             var usableData = JSON.parse(response.results);
 
             // instead of making table load data to form
+            // notice there is no need to reform table body in edit
+            // it simply loads data to form
             var formIds = ["name", "reps", "weight", "lbs", "date"];
             usableData.forEach(function(element){
               formIds.forEach(function(key){
