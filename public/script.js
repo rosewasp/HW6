@@ -181,8 +181,7 @@ function htmlTable(data){
           }
         } else if (k == "date") {
           date = Date(j[k]);
-          formattedDate = getMonth(date) + "-" + getDate(date) + "-" + getFullYear(date);
-          newCell.textContent = formattedDate;
+          newCell.textContent = date;
         } else {
           newCell.textContent = j[k];
         }
