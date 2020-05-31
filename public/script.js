@@ -162,6 +162,9 @@ function htmlTable(data){
         var req = new XMLHttpRequest();
         var editUrl = "/edit?id=" + editId;
 
+        req.open("GET", editUrl, true);
+        
+
         req.addEventListener("load", function(){
           var req = new XMLHttpRequest();
           req.open("GET", editUrl, true);
