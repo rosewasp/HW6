@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function(){
     
     // workouts cannot be logged without a name
     if (name == "") {
+      req.send(null);
       event.preventDefault();
       return;
     }
@@ -116,6 +117,7 @@ document.addEventListener("DOMContentLoaded", function(){
     
     // workouts cannot be updated without a name
     if (name == "") {
+      req.send(null);
       event.preventDefault();
       return;
     }
@@ -185,7 +187,7 @@ function htmlTable(data){
       newRow.appendChild(newDiv);
       deleteInput = document.createElement("input");
       newDiv.appendChild(deleteInput);
-      deleteInput.id = "deletebutton";
+      deleteInput.id = j.id;
       deleteInput.type = "button";
       deleteInput.value = "Delete Entry";
 
@@ -221,7 +223,7 @@ function htmlTable(data){
       // add an edit button to each newRow
       editInput = document.createElement("input");
       newDiv.appendChild(editInput);
-      editInput.id = "editbutton";
+      editInput.id = j.id;
       editInput.type = "button";
       editInput.value = "Edit Entry";
 
