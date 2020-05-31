@@ -20,11 +20,6 @@ headers.forEach(function(i){
   rowOne.appendChild(newHead);
   });
 
-// add body to table
-var tableBody = document.createElement("tbody");
-tableBody.id = "tableBody"
-workoutLog.appendChild(tableBody);
-
 document.addEventListener("DOMContentLoaded", function(){
   var req = new XMLHttpRequest();
   req.open("GET", "/database", true);
@@ -102,6 +97,11 @@ function htmlTable(data){
 
   // when JSON data is passed
   if (data != null){
+    // add body to table
+    var tableBody = document.createElement("tbody");
+    tableBody.id = "tableBody"
+    workoutLog.appendChild(tableBody);
+    
     var databaseColumns = ["name", "reps", "weight","lbs", "date"]
     //iterate through each element in JSON data
     data.forEach(function(j){
