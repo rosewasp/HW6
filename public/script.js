@@ -160,6 +160,45 @@ function htmlTable(data){
       editInput.addEventListener("click", function(){
         var editId = this.id;
         var req = new XMLHttpRequest();
+        var editUrl = "/edit?id=" + editId;
+        
+        // edit database
+        req.open("GET", editUrl, true);
+
+        req.addEventListener("load", function(){
+          var req = new XMLHttpRequest();
+          req.open("GET", "/database", true);
+          req.addEventListener("load", function(){
+            var response = JSON.parse(req.responseText);
+            var usableData = JSON.parse(response.results);
+
+            // instead of making table load data to form
+            var newBody = htmlTable(usableData);
+            var oldBody = document.getElementById("tableBody");
+            workoutLog.removeChild(oldBody);
+            newBody.id = "tableBody";
+            workoutLog.appendChild(newBody);
+          });
+          req.send(null);
+          event.preventDefault();
+        });
+        req.send(null);
+        event.preventDefault();
+      });
+
+      // add new row to table's body
+      tableBody.appendChild(newRow);
+    });
+  };
+  return tableBody;
+};
+
+
+/*
+// add functionality to edit button
+      editInput.addEventListener("click", function(){
+        var editId = this.id;
+        var req = new XMLHttpRequest();
 
         // get all the values from the workout log form
         var name = document.getElementById("name").value;
@@ -210,10 +249,3 @@ function htmlTable(data){
         req.send(null);
         event.preventDefault();
       });
-
-      // add new row to table's body
-      tableBody.appendChild(newRow);
-    });
-  };
-  return tableBody;
-};
