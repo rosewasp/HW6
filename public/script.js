@@ -1,6 +1,9 @@
 // most of the code from DOM and Events Assignment...
 // and from XML request lecture and Activity.
+
+// will be used to load and update entry
 var form = document.getElementById("secret");
+
 // Create table node
 var workoutLog = document.createElement("table");
 workoutLog.id = "workoutLog";
@@ -163,7 +166,15 @@ function htmlTable(data){
       var newRow = document.createElement("tr");
       databaseColumns.forEach(function(k){
         var newCell = document.createElement("td");
-        newCell.textContent = j[k];
+        if (k == "lbs"){
+          if (j[k] == 1){
+            newCell.textContent = "lb";
+          } else{
+            newCell.textContent = "kg";
+          }
+        } else {
+          newCell.textContent = j[k];
+        }
         newRow.appendChild(newCell);
       });
       // add a delete button to each newRow
@@ -257,62 +268,3 @@ function htmlTable(data){
   };
   return tableBody;
 };
-
-
-/*
-// add functionality to edit button
-      editInput.addEventListener("click", function(){
-        var editId = this.id;
-        var req = new XMLHttpRequest();
-
-        // get all the values from the workout log form
-        var name = document.getElementById("name").value;
-        var reps = document.getElementById("reps").value;
-        var weight = document.getElementById("weight").value;
-        var date = document.getElementById("date").value;
-        
-        // Boolean has to be processed differently
-        // for it to take effect in database
-        var trueFalse = document.getElementById("lbs").checked;
-        if (trueFalse){
-          var lbs = 1;
-        } else {
-          var lbs = 0;
-        };
-        // workouts cannot be logged without a name
-        if (name == "") {
-          return;
-        };
-        
-        // transform form elements into /edit url
-        var route = "/edit?";
-        var nameUrl = "name"+"="+name+"&";
-        var repsUrl = "reps"+"="+reps+"&";
-        var weightUrl = "weight"+"="+weight+"&";
-        var dateUrl = "date"+"="+date+"&";
-        var lbsUrl = "lbs"+"="+lbs+"&";
-        var editUrl = route + nameUrl + repsUrl + weightUrl + dateUrl + lbsUrl + "id=" + editId;
-        
-        // edit database
-        req.open("GET", editUrl, true);
-
-        req.addEventListener("load", function(){
-          var req = new XMLHttpRequest();
-          req.open("GET", "/database", true);
-          req.addEventListener("load", function(){
-            var response = JSON.parse(req.responseText);
-            var usableData = JSON.parse(response.results);
-            var newBody = htmlTable(usableData);
-            var oldBody = document.getElementById("tableBody");
-            workoutLog.removeChild(oldBody);
-            newBody.id = "tableBody";
-            workoutLog.appendChild(newBody);
-          });
-          req.send(null);
-          event.preventDefault();
-        });
-        req.send(null);
-        event.preventDefault();
-      });
-
-*/
