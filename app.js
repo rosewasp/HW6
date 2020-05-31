@@ -26,10 +26,23 @@ app.get("/",function(req,res){
     res.render("home");
 });
 
-// renders a page will all the rows from the database table
+// sends data from all the rows from the database table
 app.get('/database',function(req,res,next){
   var context = {};
   mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    context.results = JSON.stringify(rows);
+    res.send(context); // sends the database as a JSON file
+  });
+});
+
+// sends data from one row in the database table
+app.get('/edit',function(req,res,next){
+  var context = {};
+  mysql.pool.query("SELECT * FROM workouts WHERE id=?", [req.query.id], function(err, rows, fields){
     if(err){
       next(err);
       return;
@@ -53,7 +66,7 @@ app.get("/insert", function(req,res,next){
 });
 
 // from  helloMysql.js file from lecture, with added keys to queries
-app.get("/edit",function(req,res,next){
+app.get("/update",function(req,res,next){
   var context = {};
   mysql.pool.query("SELECT * FROM workouts WHERE id=?", [req.query.id], function(err, result){
     if(err){
