@@ -268,8 +268,9 @@ function htmlTable(data){
                     document.getElementById(key).checked = false;
                   }
                 } else if (key == "date") {
-                  date = new Date(element[key]);
-                  document.getElementById(key).value = date;
+                  var d = element[key]
+                  dDate = (d[5].concat(d[6].concat(d[4].concat(d[8].concat(d[9].concat(d[4].concat(d[0].concat(d[1].concat(d[2].concat(d[3]))))))))));
+                  document.getElementById(key).value = dDate;
                 } else {
                   document.getElementById(key).value = element[key];
                 }
