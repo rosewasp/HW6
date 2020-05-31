@@ -188,7 +188,7 @@ function htmlTable(data){
           req.send(null);
           event.preventDefault();
         });
-        req.send(null);
+        //req.send(null);
         event.preventDefault();
       });
 
