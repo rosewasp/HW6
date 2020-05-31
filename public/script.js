@@ -207,6 +207,8 @@ function htmlTable(data){
           req.send(null);
           event.preventDefault();
         });
+        req.send(null);
+        event.preventDefault();
       });
 
       // add new row to table's body
