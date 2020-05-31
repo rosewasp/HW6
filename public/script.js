@@ -170,7 +170,20 @@ function htmlTable(data){
             var usableData = JSON.parse(response.results);
 
             // instead of making table load data to form
-            console.log(usableData);
+            var formIds = ["name", "reps", "weight", "lbs", "date"];
+            usableData.forEach(function(element){
+              formIds.forEach(function(key){
+                if (key == "lbs"){
+                  if (element[key] == 1){
+                    document.getElementById(key).checked = true;
+                  } else {
+                    document.getElementById(key).checked = false;
+                  }
+                } else {
+                  document.getElementById(key).value = element[key];
+                };
+              });
+            });
           });
           req.send(null);
           event.preventDefault();
