@@ -161,13 +161,10 @@ function htmlTable(data){
         var editId = this.id;
         var req = new XMLHttpRequest();
         var editUrl = "/edit?id=" + editId;
-        
-        // edit database
-        req.open("GET", editUrl, true);
 
         req.addEventListener("load", function(){
           var req = new XMLHttpRequest();
-          req.open("GET", "/database", true);
+          req.open("GET", editUrl, true);
           req.addEventListener("load", function(){
             var response = JSON.parse(req.responseText);
             var usableData = JSON.parse(response.results);
@@ -245,3 +242,5 @@ function htmlTable(data){
         req.send(null);
         event.preventDefault();
       });
+
+*/
