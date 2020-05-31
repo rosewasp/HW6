@@ -181,7 +181,7 @@ function htmlTable(data){
           }
         } else if (k == "date") {
           //date = new Date(j[k]);
-          newCell.textContent = date;
+          newCell.textContent = j[k];
         } else {
           newCell.textContent = j[k];
         }
