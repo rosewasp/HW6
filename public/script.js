@@ -180,7 +180,7 @@ function htmlTable(data){
             newCell.textContent = "kg";
           }
         } else if (k == "date") {
-          date = Date(j[k]);
+          //date = new Date(j[k]);
           newCell.textContent = date;
         } else {
           newCell.textContent = j[k];
