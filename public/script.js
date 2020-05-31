@@ -123,6 +123,7 @@ function htmlTable(data){
       // add functionality to delete button
       deleteInput.addEventListener("click", function(){
         var deleteId = this.id;
+        console.log(deleteId);
         var req = new XMLHttpRequest();
         req.open("GET", "/delete?id=" + deleteId, true);
         deleteRow = this.parentElement;
