@@ -180,7 +180,9 @@ function htmlTable(data){
             newCell.textContent = "kg";
           }
         } else if (k == "date") {
-          newCell.textContent = Date(j[k]);
+          date = Date(j[k]);
+          formattedDate = getMonth(date) + "-" + getDate(date) + "-" + getFullYear(date);
+          newCell.textContent = formattedDate;
         } else {
           newCell.textContent = j[k];
         }
