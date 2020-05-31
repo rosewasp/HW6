@@ -179,6 +179,8 @@ function htmlTable(data){
           } else{
             newCell.textContent = "kg";
           }
+        } else if (k == "date") {
+          newCell.textContent = Date(j[k]);
         } else {
           newCell.textContent = j[k];
         }
