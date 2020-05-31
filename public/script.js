@@ -267,9 +267,12 @@ function htmlTable(data){
                   } else {
                     document.getElementById(key).checked = false;
                   }
+                } else if (key == "date") {
+                  date = new Date(element[key]);
+                  document.getElementById(key).value = date;
                 } else {
                   document.getElementById(key).value = element[key];
-                };
+                }
               });
             });
           });
